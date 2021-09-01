@@ -15,11 +15,6 @@ app.secret_key = 'vaibhav'
 api = Api(app)
 
 
-@app.before_first_request
-def create_tables():
-    db.create_all()
-
-
 jwt = JWT(app, authenticate, identity)  # A new endpoint is created -> /auth
 
 api.add_resource(Item, '/item/<string:name>')  # Now this will do the work of the Decorator.
